@@ -1,0 +1,36 @@
+version: "3.5"
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+
+volumes:
+  data:
+    name: "pihole-data"
+    # Uncomment 'external: true' to use externally/manually created volumes 
+    # external: true
+  dnsmasqd:
+    name: "pihole-dnsmasqd"
+    # external: true
+
+services:
+  pihole:
+    hostname: pihole-01
+    container_name: pihole-01
+    environment:
+      DNSSEC: "true"
+      DNSMASQ_LISTENING: "single"
+      INTERFACE: "eth0"   # eth0 is default for most linux OS
+      PIHOLE_DNS_: 1.1.1.1;1.0.0.1;8.8.8.8;8.8.4.4;208.67.222.222;208.67.220.220;;4.2.2.1;4.2.2.2
+      TZ: "America/New_York"
+      # WEBPASSWORD: 'set a secure password here or it will be random'
+    image: pihole/pihole:latest
+    ports:       # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+      - "80:80/udp"
+      - "443:443/tcp"
+      - "443:443/udp"
+    volumes:     # Volumes store your data between container upgrades
+      - data:/etc/pihole
+      - dnsmasqd:/etc/dnsmasq.d
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    restart: unless-stopped
