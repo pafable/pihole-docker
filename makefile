@@ -31,4 +31,4 @@ up:
 	${CMP} up -d
 # 	sleep is needed to give the pihole container time to initialize before adding adlists to DB
 	${SLP} 15
-	${PY} add-list.py
+	${PY} add-lists.py
