@@ -18,7 +18,7 @@ services:
       DNSSEC: "true"
       DNSMASQ_LISTENING: "single"
       INTERFACE: "eth0"   # eth0 is default for most linux OS
-      PIHOLE_DNS_: 1.1.1.1;1.0.0.1;8.8.8.8;8.8.4.4;208.67.222.222;208.67.220.220;;4.2.2.1;4.2.2.2
+      PIHOLE_DNS_: 1.1.1.1;1.0.0.1;8.8.8.8;8.8.4.4;208.67.222.222;208.67.220.220;4.2.2.1;4.2.2.2
       TZ: "America/New_York"
       # WEBPASSWORD: 'set a secure password here or it will be random'
     image: pihole/pihole:latest
