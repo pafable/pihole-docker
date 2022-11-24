@@ -5,7 +5,7 @@ DCKRCMP=$(which docker-compose)
 IMAGE="pihole/pihole:latest"
 
 function main() {
-  printf "Shutting down pihole container"
+  printf "Shutting down pihole container\n"
   ${DCKRCMP} down
 
   printf "\nPulling down latest pihole image"
