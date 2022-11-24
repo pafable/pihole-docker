@@ -18,7 +18,7 @@ function main() {
   ${DCKRCMP} logs
 
   printf "\nDeleting previous pihole image"
-  ${DCKR} image prune
+  ${DCKR} image prune --force
 }
 
 if [ "$(${DCKR} ps | grep -c -i "pihole")" == 1 ]
