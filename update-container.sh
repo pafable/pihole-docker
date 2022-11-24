@@ -21,7 +21,7 @@ function main() {
   ${DCKR} image prune
 }
 
-if [ "$(${DCKR} "ps" | grep -c -i "pihole")" == 1 ]
+if [ "$(${DCKR} ps | grep -c -i "pihole")" == 1 ]
 then
   main
 fi
